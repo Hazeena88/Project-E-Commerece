@@ -3,7 +3,7 @@
 resource "aws_security_group" "webserver_security_group" {
   name        = "web-sg"
   description = "enable http/https access on port 80/443 via alb sg and access on port 22 via ssh sg"
-  vpc_id      = 
+  vpc_id      = aws_vpc.vpc.id
 
   ingress {
     description      = "http access"
@@ -31,7 +31,7 @@ resource "aws_security_group" "webserver_security_group" {
   }
 
   tags   = {
-    Name = ""
+    Name = "web-sg"
   }
 }
 
